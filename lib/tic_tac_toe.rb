@@ -113,27 +113,27 @@ class TicTacToe
     end
   end  
 
-def over?(board)
-  if won?(board) || draw?(board) || full?(board)
+  def over?
+  if won? || draw? || full?
     TRUE
   else 
     FALSE
   end
 end
 
-def winner(board)
-  if !won?(board)
-    return nil
-  else 
-  win = won?(board)
-  char_win = win[0]
-    if board[char_win] == "X"
-      return "X"
-    elsif board[char_win] == "O"
-      return "O"
+  def winner
+    if !won?
+      return nil
+    else 
+    win = won?
+    char_win = win[0]
+      if @board[char_win] == "X"
+        return "X"
+      elsif @board[char_win] == "O"
+        return "O"
+      end
     end
   end
-end
 
 def play(board)
   until over?(board) == TRUE
