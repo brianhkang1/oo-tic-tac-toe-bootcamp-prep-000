@@ -93,15 +93,15 @@ class TicTacToe
     return FALSE 
   end
 
-def full?(board)
-  board.all? do |index|
-    if index == "O" || index == "X"
-      TRUE
-    else 
-      FALSE
+  def full?
+    @board.all? do |index|
+      if index == "O" || index == "X"
+        TRUE
+      else 
+        FALSE
+      end
     end
   end
-end
 
 def draw?(board)
   if !won?(board) && full?(board) 
