@@ -69,12 +69,12 @@ class TicTacToe
     return counter
   end
 
-def current_player(board)
-  if turn_count(board).even? 
-    return "X"
-  else return "O"
+  def current_player
+    if turn_count.even? 
+      return "X"
+    else return "O"
+    end
   end
-end
 
 def won?(board)
   WIN_COMBINATIONS.each do |win_combination|
