@@ -51,7 +51,7 @@ class TicTacToe
       move(index, current_player)
       return display_board
     else
-      until valid_move?(board, index) == TRUE
+      until valid_move?(index) == TRUE
         puts "Please enter 1-9:"
         input = gets.strip
         index = input_to_index(input)
