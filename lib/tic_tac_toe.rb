@@ -43,7 +43,7 @@ class TicTacToe
     end
   end
 
-  def turn(board)
+  def turn
     puts "Please enter 1-9:"
     input = gets.strip
     index = input_to_index(input)
@@ -59,5 +59,92 @@ class TicTacToe
     end
   end
   
+  def turn_count
+  counter = 0
+  @board.each do |element|
+    if element == "X" || element == "O"
+      counter += 1
+    end
+  end
+    return counter
+  end
+
+def current_player(board)
+  if turn_count(board).even? 
+    return "X"
+  else return "O"
+  end
+end
+
+def won?(board)
+  WIN_COMBINATIONS.each do |win_combination|
+    win_index_1 = win_combination[0]
+    win_index_2 = win_combination[1]
+    win_index_3 = win_combination[2]
+    
+    position_1 = board[win_index_1]
+    position_2 = board[win_index_2]
+    position_3 = board[win_index_3]
+    
+    if (position_1 == "X" && position_2 == "X" && position_3 == "X") || (position_1 == "O" && position_2 == "O" && position_3 == "O")
+      return win_combination
+    end
+  end
+  return FALSE 
+end
+
+def full?(board)
+  board.all? do |index|
+    if index == "O" || index == "X"
+      TRUE
+    else 
+      FALSE
+    end
+  end
+end
+
+def draw?(board)
+  if !won?(board) && full?(board) 
+    return TRUE
+  elsif !won?(board) 
+    return FALSE
+  elsif won?(board)
+    return FALSE 
+  end
+end  
+
+def over?(board)
+  if won?(board) || draw?(board) || full?(board)
+    TRUE
+  else 
+    FALSE
+  end
+end
+
+def winner(board)
+  if !won?(board)
+    return nil
+  else 
+  win = won?(board)
+  char_win = win[0]
+    if board[char_win] == "X"
+      return "X"
+    elsif board[char_win] == "O"
+      return "O"
+    end
+  end
+end
+
+def play(board)
+  until over?(board) == TRUE
+    turn(board)
+  end
+  
+  if over?(board) && !draw?(board)
+    puts "Congratulations #{winner(board)}!"
+  elsif draw?(board) == TRUE 
+    puts "Cat\'s Game!"
+  end
+end
   
 end
