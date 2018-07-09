@@ -135,16 +135,16 @@ end
     end
   end
 
-def play(board)
-  until over?(board) == TRUE
-    turn(board)
-  end
+  def play
+    until over?(board) == TRUE
+      turn(board)
+    end
   
-  if over?(board) && !draw?(board)
-    puts "Congratulations #{winner(board)}!"
-  elsif draw?(board) == TRUE 
-    puts "Cat\'s Game!"
+    if over?(board) && !draw?(board)
+      puts "Congratulations #{winner(board)}!"
+    elsif draw?(board) == TRUE 
+      puts "Cat\'s Game!"
+    end
   end
-end
   
 end
